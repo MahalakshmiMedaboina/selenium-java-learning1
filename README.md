@@ -1,342 +1,633 @@
-# Selenium Intro (Java)
+# Java & Selenium Learning Repository
 
-A tiny Java project that demonstrates launching a browser with Selenium WebDriver and performing a few basic interactions (open URL, print title, close browser).
-
-This repository contains a simple example class: `seleBasics.SelIntro` which creates a WebDriver instance, navigates to a URL, prints the page title and current URL, then closes the browser.
+A comprehensive Java learning project that covers core Java concepts, Object-Oriented Programming (OOP), and Selenium WebDriver automation fundamentals. This repository demonstrates launching a browser with Selenium, performing basic interactions, and exploring fundamental Java concepts through practical examples.
 
 ---
 
-## Quick checklist (what you can do right now)
-- Build the project with Maven: `mvn compile` (runs on Windows `cmd.exe`).
-- Run the example from an IDE (recommended for beginners): run the `SelIntro` Java application.
-- Run from the command line with Maven: `mvn -Dexec.mainClass=seleBasics.SelIntro exec:java` (Maven will download the exec plugin automatically).
+## 📋 Quick Start
+
+### **Build the project**
+```
+mvn compile
+```
+This downloads dependencies and compiles classes into `target/classes`.
+
+### **Run the Selenium example**
+From IDE: Run `seleBasics.SelIntro` main class directly.
+
+From command line:
+```
+mvn -Dexec.mainClass=seleBasics.SelIntro exec:java
+```
+
+### **Run any other Java class**
+```
+mvn -Dexec.mainClass=<package.ClassName> exec:java
+```
+Example: `mvn -Dexec.mainClass=coreJavaBrushUp1.VariableDatatypes exec:java`
 
 ---
 
-## Requirements
-- Java 17+ (this project was developed with modern JDKs; Java 21 is known to work).
-- Maven (optional but recommended to manage dependencies and run from the command line).
-- A Chromium-based browser (Chrome or Edge) or Firefox installed.
+## 📦 Requirements
 
-Note: Selenium 4 includes Selenium Manager which usually downloads the correct browser driver binary for you at runtime, so you do not normally need to manually download chromedriver/geckodriver/msedgedriver.
+- **Java 17+** (Java 21 recommended for best compatibility)
+- **Maven** (optional but recommended for building and running)
+- **Browser**: Chrome, Edge, or Firefox (for Selenium examples)
 
----
-
-## Build
-From the project root (Windows cmd):
-
-    mvn compile
-
-This will download dependencies and compile the classes into `target/classes`.
+**Note**: Selenium 4 includes Selenium Manager which auto-downloads the correct driver binary, so manual driver setup is usually not needed.
 
 ---
 
-## Run
-Recommended: run from your IDE (Eclipse/IntelliJ/VS Code) by running the `seleBasics.SelIntro` main class.
+## 📁 Project Structure
 
-From the command line (Maven exec plugin):
+```
+src/
+├── seleBasics/              → Selenium WebDriver basics
+│   └── SelIntro.java
+├── coreJavaBrushUp1/        → Core Java fundamentals
+│   ├── VariableDatatypes.java
+│   ├── ArrayConcept.java
+│   ├── MethodDemo.java
+│   ├── MethodDemo2.java
+│   ├── ForLoopOnArrays.java
+│   ├── ForLoopArrayList.java
+│   ├── FoorLoopArrayConditional.java
+│   └── literalStringNewString.java
+├── coreJava/                → Advanced core Java
+│   ├── ConstructorDemo.java
+│   ├── DateDemo.java
+│   └── CalendarDemo.java
+├── arraysConcept/           → Arrays and multidimensional arrays
+│   ├── ArraysDemo1.java
+│   ├── ArraysDemo2.java
+│   ├── MultiDimentionalArray.java
+│   └── MiniNumMultiD.java
+├── loops/                   → Loop structures
+│   ├── ForLoopArrays.java
+│   ├── WhileDemo.java
+│   ├── DoWhileDemo.java
+│   └── NestedForLoop.java
+├── InheritanceConcept/      → Class inheritance
+│   ├── ParentClassDemo.java
+│   └── ChildClassDemo.java
+├── abstractConcept/         → Abstract classes and methods
+│   ├── ParentAirCraft.java
+│   └── ChildEmirates.java
+├── polymorphismConcept/     → Method overloading & overriding
+│   ├── MethodOverloading.java
+│   ├── OverridingParentClass.java
+│   └── OverridingChildClass.java
+└── InterfaceConcept/        → Interfaces and implementation
+    ├── continentalTraffic.java
+    ├── centralTraffic.java
+    └── IndianTraffic.java
 
-    mvn -Dexec.mainClass=seleBasics.SelIntro exec:java
-
-This runs the program with Maven managing the classpath (downloads the exec plugin if needed).
-
-If you prefer to run the compiled class directly with `java`, make sure all dependency JARs are on the classpath. A convenient way is to use the Maven exec approach above.
-
----
-
-## Which browser does the example use?
-Open `src/seleBasics/SelIntro.java`.
-- The current example instantiates an EdgeDriver (and sets `webdriver.edge.driver` to a local path). If you want Selenium Manager to manage the driver automatically, remove the explicit System.setProperty line and create the driver instance directly.
-
-Examples:
-- Use Selenium Manager (recommended):
-
-    WebDriver driver = new ChromeDriver();
-    // or
-    WebDriver driver = new EdgeDriver();
-
-- Manually point to a driver binary (Windows example):
-
-    System.setProperty("webdriver.edge.driver", "C:\\path\\to\\msedgedriver.exe");
-    WebDriver driver = new EdgeDriver();
-
-Replace the path with the actual location of `msedgedriver.exe`, `chromedriver.exe`, or `geckodriver.exe` if you manage drivers yourself.
-
----
-
-## Troubleshooting
-- Browser does not start / driver fails to launch:
-  - If you set a driver system property, verify the path and that the binary is for your browser/version.
-  - Remove the explicit System.setProperty line and rely on Selenium Manager (recommended) so Selenium can fetch the correct driver automatically.
-  - Make sure the browser (Chrome/Edge/Firefox) is installed and up to date.
-- Class not found when running with `java` directly: ensure dependencies are on the classpath. Use the Maven exec approach to avoid classpath issues.
-- Permission issues on driver binary: on Windows, ensure the .exe is not blocked by antivirus and is executable.
-
----
-
-## Project layout (relevant files)
-- `src/seleBasics/SelIntro.java` — main example that opens a browser and prints title/URL.
-- `pom.xml` — Maven project file that declares Selenium and test dependencies.
-- `target/` — compiled classes and build artifacts (created after `mvn compile`).
-
----
-
-## Next steps / improvements
-- Add an `exec-maven-plugin` config to `pom.xml` for a convenient `mvn exec:java` setup.
-- Add a small TestNG/JUnit test that runs headless browser checks (useful for CI).
-- Convert the example to use WebDriverManager or keep relying on Selenium Manager for simplicity.
-
-If you want, I can: wire up `exec-maven-plugin` in `pom.xml`, add a short example test, or update `SelIntro.java` to use Selenium Manager instead of a hard-coded driver path—tell me which and I will make the change.
+pom.xml                       → Maven dependencies
+```
 
 ---
 
-## Topics covered (structured revision notes with answers & differences)
+## 🎓 Topics Covered
 
-Below is a compact, interview-friendly layout of the topics covered in this repo. Each entry contains: a short definition, key points/subtypes, a one-line sample interview question, a concise answer, and a short 'main differences' note where relevant.
-
-### **1) Object-Oriented Programming (OOP)**
-
-- **Inheritance**
-
-  - Definition: A mechanism where a class (child/subclass) derives from another class (parent/superclass) to reuse and extend behavior.
-
-  - Key points: `extends` keyword, single class inheritance in Java, `super` to access parent members.
-
-  - Quick question: What is the difference between class inheritance and interface implementation?
-
-  - Answer: Inheritance (`extends`) shares implementation and state from one parent class; implementing an interface (`implements`) means agreeing to provide method implementations but does not share state.
-
-  - Main differences: Inheritance reuses code/state; interfaces define a contract and allow multiple types.
-
-- **Abstraction (abstract classes & interfaces)**
-
-  - Definition: Abstraction hides implementation details and exposes only relevant operations. In Java, abstraction can be provided either via **abstract classes** or **interfaces**.
-
-  - **Abstract classes**
-
-    - What: A class declared with the `abstract` keyword that can contain abstract methods (no body) and concrete methods/fields.
-
-    - Access: An abstract class may be declared `public` or left package-private (no modifier). Declare it `public` if it must be visible across packages.
-
-    - Use when: You want to share common implementation or state (fields/constructors) and force subclasses to implement specific abstract methods.
-
-    - Quick question: Should an abstract class always be `public`?
-
-    - Answer: No — it can be package-private. Make it `public` only when you need it to be accessed from other packages.
-
-    - Tiny example: an abstract base with one abstract method and one concrete helper method (conceptual).
-
-  - **Interfaces**
-
-    - What: A contract that specifies method signatures (and since Java 8, also default and static methods with bodies). Historically interfaces contained only abstract methods (no body).
-
-    - Method bodies: By default, interface methods are abstract (no body) and implicitly `public` (older Java rules). Since Java 8 interfaces may include `default` and `static` methods that have implementations; more recent Java versions also allow `private` methods inside interfaces for reuse.
-
-    - Access: Like classes, an interface may be declared `public` or package-private. If you want the interface to be usable from other packages, declare it `public`.
-
-    - Use when: You need to define a capability/contract that multiple unrelated classes can implement (allows multiple inheritance of type).
-
-    - Quick question: Must interface methods have no body and be declared `public`?
-
-    - Answer: Historically yes (abstract, implicitly public), but modern interfaces can include `default`/`static` methods with bodies; methods without modifiers are implicitly `public` for compatibility. The interface itself need not be `public` unless required across packages.
-
-    - Tiny example: an interface with an abstract method (no body) and an optional `default` method (small example concept).
-
-  - Main differences (abstract class vs interface)
-
-    - Abstract class: can have fields, constructors, and concrete methods; a class extends only one abstract class.
-
-    - Interface: primarily method signatures (contract); allows multiple interface implementations; since Java 8 can have default/static implementations.
-
-    - Visibility: both can be `public` or package-private; choose `public` when cross-package use is required.
-
-- **Interfaces**
-
-  - Definition: A contract that classes implement; can contain abstract methods, default and static methods (since Java 8+), and private methods (since later versions).
-
-  - Key points: `implements` keyword, multiple interfaces allowed.
-
-  - Quick question: Can a class implement multiple interfaces? How does that differ from class inheritance?
-
-  - Answer: Yes, a class can implement multiple interfaces, allowing multiple behaviors without the single-parent restriction of classes.
-
-  - Main differences: Use interfaces to compose capabilities; inheritance is for an "is-a" relationship with shared implementation.
-
-- **Polymorphism**
-
-  - Definition: The ability to treat objects of different types through a common interface/type reference.
-
-  - Two main forms in Java:
-
-    - **Compile-time polymorphism (Method Overloading)**
-
-      - Definition: Same method name with different parameter lists in the same class.
-
-      - Quick question: How does the compiler pick which overloaded method to call?
-
-      - Answer: The compiler picks the best match based on argument types at compile time (method resolution).
-
-      - Main differences: Overloading is compile-time; signatures differ by parameter list.
-
-    - **Runtime polymorphism (Method Overriding)**
-
-      - Definition: Subclass provides a specific implementation for a method declared in the parent class.
-
-      - Quick question: How does Java decide which overridden method to call at runtime?
-
-      - Answer: Java uses the actual object's class at runtime (dynamic dispatch) to pick the overridden method.
-
-      - Main differences: Overriding uses the same signature and is resolved at runtime.
-
-- **Encapsulation**
-
-  - Definition: Hiding internal state and exposing behavior via accessors (getters/setters) and access modifiers.
-
-  - Key points: `private` fields, `public`/`protected` accessors, preserve invariants.
-
-  - Quick question: Why is encapsulation important for maintainability?
-
-  - Answer: Encapsulation protects internal state and allows implementation to change without affecting users of the class.
-
-  - Tiny note: Immutable objects (no setters) are a strong encapsulation pattern.
-
-
-### **2) Core Java essentials**
-
-- **Variables & Data Types**
-
-  - Definition: Named storage with a type; primitives (int, boolean, double, char) vs reference types (String, objects).
-
-  - Quick question: What is the default value of an uninitialized instance variable of type `int`?
-
-  - Answer: `0` for `int` instance variables.
-
-- **Methods (Function basics)**
-
-  - Definition: Reusable blocks of code; can accept parameters and return values.
-
-  - Quick question: What does it mean for a method to be `static`?
-
-  - Answer: `static` methods belong to the class, not instances; call them via `ClassName.method()` without creating an object.
-
-- **Strings & String Pooling**
-
-  - Definition: `String` is immutable; string literals are interned in the string pool, while `new String()` always creates a new object on the heap.
-
-  - Quick question: What is the difference between `String s = "x";` and `String s = new String("x");`? When would `==` be true vs `equals()`?
-
-  - Answer: `"x"` uses the pooled literal (shared reference); `new String("x")` makes a new object. `==` checks reference identity (true only for same object or pooled literal), while `equals()` checks content and returns true if the text matches.
-
-  - Main differences: Use literals for shared references; use `equals()` for content comparison. `intern()` can be used to get the pooled reference.
-
-  - Creation approaches & intern/example (kept brief):
-
-    - Literal: `String s1 = "hello";` (pooled)
-
-    - new: `String s2 = new String("hello");` (heap)
-
-    - `s2.intern()` returns pooled reference.
-
-- **Arrays & ArrayList (Collections basics)**
-
-  - Definition: Arrays are fixed-size containers; `ArrayList` is a resizable list from `java.util`.
-
-  - Quick question: How do you convert an array to an `ArrayList` and vice versa?
-
-  - Answer: Convert array -> ArrayList: `Arrays.asList(array)` (wraps fixed-size list) or `new ArrayList<>(Arrays.asList(array))` for a resizable list. ArrayList -> array: `list.toArray(new Type[0])`.
-
-  - Main differences:
-
-    - Size: array uses `array.length` (field), ArrayList uses `list.size()` (method).
-
-    - Resizing: array fixed; ArrayList resizable.
-
-    - Primitives: arrays can hold primitives directly; ArrayList holds objects (use wrappers).
-
-- **Loops (for, while, do-while, nested)**
-
-  - Definition: Control structures for repetition; choose based on known iteration count vs condition-driven loops.
-
-  - Quick question: When would you prefer a `for-each` loop over a traditional indexed `for`?
-
-  - Answer: Prefer `for-each` when you only need elements (no index) and don't need to modify the collection's structure during iteration.
-
-  - Main differences: `for-each` is simpler and less error-prone; indexed `for` gives access to indices and allows skipping or modifying by index.
-
-- **Exception basics**
-
-  - Definition: Mechanism for handling runtime problems using `try`/`catch`/`finally` and `throws` declarations.
-
-  - Quick question: Checked vs unchecked exceptions—what's the difference?
-
-  - Answer: Checked exceptions must be declared or handled at compile time (checked by compiler), unchecked (RuntimeException and subclasses) do not need to be declared or caught.
-
-- **Access modifiers & `static`**
-
-  - Definition: `public`, `protected`, `private`, package-private control visibility; `static` ties members to the class rather than instances.
-
-  - Quick question: What is a static initializer block and when is it executed?
-
-  - Answer: A static initializer (`static { ... }`) runs once when the class is first loaded by the JVM.
-
-
-### **3) Selenium & browser automation**
-
-- **Selenium WebDriver basics**
-
-  - Definition: API for automating browsers; create a `WebDriver` instance to control a browser and call methods like `get()`, `getTitle()`, `getCurrentUrl()`, `close()`/`quit()`.
-
-  - Quick question: What is the difference between `driver.close()` and `driver.quit()`?
-
-  - Answer: `driver.close()` closes the current browser window/tab; `driver.quit()` closes all browser windows and ends the WebDriver session (recommended at test end).
-
-  - Main differences: `quit()` cleans up the session and driver processes; `close()` may leave the session running if other windows remain.
-
-- **Browser drivers & Selenium Manager**
-
-  - Definition: Browser-specific executables (chromedriver, geckodriver, msedgedriver) that WebDriver uses to control browsers. Selenium Manager can auto-download the correct driver for you.
-
-  - Quick question: How does Selenium Manager simplify setup in modern Selenium versions?
-
-  - Answer: Selenium Manager automatically locates and downloads the correct driver binary for the installed browser/version, removing manual driver management in most cases.
-
-- **Basic automation flow**
-
-  - Definition: Start driver -> navigate -> locate elements -> interact -> assert/check -> cleanup (close/quit).
-
-  - Quick question: What would you assert after navigating to a login page to confirm it loaded correctly?
-
-  - Answer: Assert page title, presence/visibility of username/password fields, or a unique element like a login button.
-
-- **Quick note on running tests**
-
-  - Tip: Use Maven (`mvn compile` / `mvn -Dexec.mainClass=seleBasics.SelIntro exec:java`) or run from your IDE for easier debugging.
-
-
-### **4) Testing & best practices (short)**
-
-- **Test frameworks**
-
-  - Definition: TestNG/JUnit provide structure for writing and running tests, assertions, and test lifecycle management.
-
-  - Quick question: When should you use `@BeforeClass` vs `@BeforeMethod` in TestNG?
-
-  - Answer: `@BeforeClass` runs once before any tests in the class (use for expensive setup); `@BeforeMethod` runs before each test method (use for per-test setup).
-
-- **Headless runs and CI**
-
-  - Definition: Run browsers in headless mode for CI environments to avoid opening a UI.
-
-  - Quick question: What are trade-offs of headless vs headed runs?
-
-  - Answer: Headless runs are faster and CI-friendly but may behave slightly differently (rendering/visual differences); headed is closest to real user behavior and preferable for debugging.
-
-- **Small checklist of interview-ready items**
-
-  - Be able to explain OOP concepts with a short example (2–3 lines of code) and give a one-line answer to the sample question.
-
-  - Memorize key differences (e.g., `array.length` vs `ArrayList.size()`, string literal vs `new String()`, `close()` vs `quit()`).
-
-  - Describe how Selenium interacts with the browser (driver binary + WebDriver API) and the typical automation flow.
+This section provides a structured breakdown of all Java concepts covered in this repository, organized by category with clear explanations and real-world examples.
 
 ---
+
+## 🏛️ **CORE JAVA FUNDAMENTALS**
+
+---
+
+### **1️⃣ Variables & Data Types**
+
+**Definition**: Named storage locations with a specific type. Java has two categories: primitive types and reference types.
+
+**Primitive Types**: `int`, `double`, `float`, `boolean`, `char`, `byte`, `short`, `long`
+
+**Reference Types**: Objects, Strings, Arrays, Collections
+
+| Concept | Example | Notes |
+|---------|---------|-------|
+| Default int value | `int x;` → `0` | Instance variables default to `0` |
+| String reference | `String s = "hello";` | Reference to object in memory |
+| Type conversion | `int i = (int) 10.5;` | Explicit casting required for precision loss |
+
+**Related files**: `src/coreJavaBrushUp1/VariableDatatypes.java`
+
+---
+
+### **2️⃣ Methods**
+
+**Definition**: Reusable blocks of code that perform specific tasks, can accept parameters, and return values.
+
+**Key Points**:
+- Methods belong to classes
+- `static` methods can be called on the class itself without creating an instance
+- Instance methods require an object instance
+- Return type can be `void` (no return) or any data type
+
+**Interview Q**: What does `static` mean in a method?
+
+**Answer**: A `static` method belongs to the class, not to instances. You call it via `ClassName.methodName()` without needing to create an object.
+
+**Related files**: `src/coreJavaBrushUp1/MethodDemo.java`, `src/coreJavaBrushUp1/MethodDemo2.java`
+
+---
+
+### **3️⃣ Strings & String Pooling**
+
+**Definition**: `String` is an immutable class. String literals are interned in the string pool; `new String()` creates a separate object on the heap.
+
+**Key Differences**:
+
+| Approach | Storage | Reference | Use Case |
+|----------|---------|-----------|----------|
+| Literal: `"hello"` | String pool | Shared | Frequently used strings |
+| new: `new String("hello")` | Heap | New object each time | When you need a distinct object |
+| `.equals()` | Compares content | Always use for content check | Comparing two strings |
+| `==` | Compares reference | Only true for same object | Usually not recommended for strings |
+
+**Example**:
+```java
+String s1 = "hello";      // Pooled
+String s2 = new String("hello");  // Heap
+s1 == s2;     // false (different references)
+s1.equals(s2);  // true (same content)
+```
+
+**Related files**: `src/coreJavaBrushUp1/literalStringNewString.java`
+
+---
+
+### **4️⃣ Constructors**
+
+**Definition**: Special methods that initialize objects when they are created. They have the same name as the class and no return type.
+
+**Key Points**:
+- Called automatically when an object is instantiated with `new`
+- Used to initialize fields and set up the object state
+- If no constructor is defined, Java provides a default (implicit) constructor
+- Can be overloaded (multiple constructors with different parameters)
+
+**When constructor is called**:
+```java
+ConstructorDemo obj = new ConstructorDemo();  // Constructor runs here
+```
+
+**Interview Q**: What happens if you don't define any constructor in your class?
+
+**Answer**: Java automatically provides a default (no-argument) constructor that does nothing but allows object creation.
+
+**Related files**: `src/coreJava/ConstructorDemo.java`
+
+---
+
+### **5️⃣ Arrays**
+
+**Definition**: Fixed-size container that stores multiple values of the same data type.
+
+**Key Characteristics**:
+- Fixed size once created (cannot grow or shrink)
+- Zero-indexed (first element at index 0)
+- Can be single-dimensional or multi-dimensional
+- Access via index: `array[0]`, `array[1]`, etc.
+- Length accessible via `.length` property
+
+**Array Declaration & Initialization**:
+```java
+// Method 1: Declare and allocate
+int[] arr = new int[5];  // Array of size 5, default values 0
+arr[0] = 10;
+arr[1] = 20;
+
+// Method 2: Direct initialization
+int[] arr2 = {1, 2, 3, 4, 5};
+
+// Accessing
+for(int i = 0; i < arr.length; i++) {
+    System.out.println(arr[i]);
+}
+```
+
+**Multi-dimensional Arrays**:
+```java
+int[][] matrix = new int[3][3];  // 3x3 matrix
+matrix[0][0] = 1;
+```
+
+**Related files**: 
+- `src/arraysConcept/ArraysDemo1.java`
+- `src/arraysConcept/ArraysDemo2.java`
+- `src/arraysConcept/MultiDimentionalArray.java`
+- `src/arraysConcept/MiniNumMultiD.java`
+
+---
+
+### **6️⃣ ArrayList (Collections)**
+
+**Definition**: Resizable list from `java.util` package that dynamically grows or shrinks.
+
+**Array vs ArrayList**:
+
+| Feature | Array | ArrayList |
+|---------|-------|-----------|
+| Size | Fixed (immutable) | Dynamic (resizable) |
+| Size method | `.length` (property) | `.size()` (method) |
+| Primitives | Stores directly | Stores wrapper objects |
+| Syntax | `int[]` | `ArrayList<Integer>` |
+
+**Basic Operations**:
+```java
+ArrayList<Integer> list = new ArrayList<>();
+list.add(10);       // Add element
+list.add(20);
+list.remove(0);     // Remove by index
+list.size();        // Get size
+list.get(0);        // Get element
+```
+
+**Related files**: `src/coreJavaBrushUp1/ForLoopArrayList.java`
+
+---
+
+### **7️⃣ Loops**
+
+**Definition**: Control structures for repeating code blocks based on conditions or iteration counts.
+
+**Loop Types**:
+
+| Loop Type | Best For | Example |
+|-----------|----------|---------|
+| `for` | Known iteration count | `for(int i=0; i<10; i++)` |
+| `for-each` | Iterating all elements | `for(int x : array)` |
+| `while` | Condition-based | `while(x > 0)` |
+| `do-while` | Run at least once | `do { } while(condition)` |
+| Nested | Multiple levels | `for() { for() {...} }` |
+
+**Key Points**:
+- `for-each` is safer (no index out of bounds) but doesn't give you the index
+- `while` checks condition before entering loop
+- `do-while` executes at least once regardless of condition
+- Nested loops for multi-dimensional traversal
+
+**Related files**:
+- `src/loops/WhileDemo.java`
+- `src/loops/DoWhileDemo.java`
+- `src/loops/NestedForLoop.java`
+- `src/coreJavaBrushUp1/ForLoopOnArrays.java`
+- `src/coreJavaBrushUp1/FoorLoopArrayConditional.java`
+
+---
+
+### **8️⃣ Date & Time**
+
+**Definition**: Classes for working with dates, times, and calendars.
+
+**Basic Classes**:
+- `java.util.Date` - Represents a specific point in time
+- `java.util.Calendar` - More flexible date/time operations
+
+**Related files**: 
+- `src/coreJava/DateDemo.java`
+- `src/coreJava/CalendarDemo.java`
+
+---
+
+## 🔷 **OBJECT-ORIENTED PROGRAMMING (OOP)**
+
+---
+
+### **1️⃣ Inheritance**
+
+**Definition**: A mechanism where a class (child/subclass) derives from another class (parent/superclass) to reuse and extend behavior.
+
+**Key Points**:
+- Uses `extends` keyword
+- Java supports **single class inheritance** only (a class extends one parent)
+- Child class inherits all public and protected members
+- `super` keyword accesses parent class members
+
+**Example**:
+```java
+class Parent { 
+    public void method() { } 
+}
+class Child extends Parent { 
+    // Inherits method() from Parent
+}
+```
+
+**Interview Q**: What is the difference between inheritance and interface implementation?
+
+**Answer**: Inheritance (`extends`) allows a class to inherit implementation and state from one parent class. Interface implementation (`implements`) means implementing method signatures from an interface without inheriting state (multiple interfaces allowed).
+
+**Related files**:
+- `src/InheritanceConcept/ParentClassDemo.java`
+- `src/InheritanceConcept/ChildClassDemo.java`
+
+---
+
+### **2️⃣ Abstraction**
+
+**Definition**: Hides implementation details and exposes only relevant operations. Two ways in Java: abstract classes and interfaces.
+
+**Abstract Classes**:
+- Declared with `abstract` keyword
+- Can contain abstract methods (no body) and concrete methods
+- Cannot be instantiated
+- Can have fields and constructors
+- Use when sharing implementation and state
+
+**Example**:
+```java
+abstract class Animal {
+    abstract void sound();      // Must be implemented by child
+    public void sleep() { }     // Concrete method
+}
+```
+
+**Interview Q**: Can an abstract class be `public` or package-private?
+
+**Answer**: Both. Make it `public` only when it needs to be accessed from other packages. By default (no modifier), it's package-private.
+
+**Related files**:
+- `src/abstractConcept/ParentAirCraft.java`
+- `src/abstractConcept/ChildEmirates.java`
+
+---
+
+### **3️⃣ Interfaces**
+
+**Definition**: A contract specifying method signatures that classes must implement. Since Java 8, interfaces can also have `default` and `static` methods.
+
+**Key Points**:
+- Uses `implements` keyword
+- **Multiple interface implementation allowed** (unlike single class inheritance)
+- Historically contained only abstract methods
+- Since Java 8: can include `default` and `static` methods with implementations
+- Methods are implicitly `public`
+
+**Example**:
+```java
+interface Traffic {
+    void slowDown();  // Abstract method
+    
+    default void followRules() { }  // Default implementation (Java 8+)
+    
+    static void alert() { }  // Static method (Java 8+)
+}
+
+class IndianTraffic implements Traffic {
+    public void slowDown() { 
+        System.out.println("Slowing down...");
+    }
+}
+```
+
+**Interview Q**: Can a class implement multiple interfaces? Why is this useful?
+
+**Answer**: Yes! A class can implement multiple interfaces. This allows composing multiple behaviors without the single-parent restriction of class inheritance. It's like saying "this class behaves as multiple types."
+
+**Related files**:
+- `src/InterfaceConcept/continentalTraffic.java`
+- `src/InterfaceConcept/centralTraffic.java`
+- `src/InterfaceConcept/IndianTraffic.java`
+
+---
+
+### **4️⃣ Polymorphism**
+
+**Definition**: The ability to treat objects of different types through a common interface or reference. Two forms in Java:
+
+**A) Compile-time Polymorphism (Method Overloading)**
+
+Same method name, different parameter lists in the **same class**.
+
+**Example**:
+```java
+class Calculator {
+    public int add(int a, int b) { return a + b; }
+    public double add(double a, double b) { return a + b; }  // Different parameters
+    public int add(int a, int b, int c) { return a + b + c; }
+}
+```
+
+**How it works**: Compiler picks the best matching method based on argument types.
+
+**Interview Q**: How does the compiler pick which overloaded method to call?
+
+**Answer**: At compile time, it matches the argument types and count to find the best fitting method signature.
+
+**Related files**: `src/polymorphismConcept/MethodOverloading.java`
+
+---
+
+**B) Runtime Polymorphism (Method Overriding)**
+
+Subclass provides a different implementation for a method declared in the **parent class** or interface.
+
+**Example**:
+```java
+class Animal {
+    public void sound() { System.out.println("Generic sound"); }
+}
+
+class Dog extends Animal {
+    @Override
+    public void sound() { System.out.println("Bark!"); }  // Override with specific behavior
+}
+
+Animal dog = new Dog();
+dog.sound();  // Prints "Bark!" (uses Dog's version, not Animal's)
+```
+
+**How it works**: Uses **dynamic dispatch** - Java checks the actual object's class at runtime, not the reference type.
+
+**Interview Q**: How does Java decide which overridden method to call at runtime?
+
+**Answer**: Java looks at the actual object type (not the reference type) and calls the overridden method from that class.
+
+**Related files**:
+- `src/polymorphismConcept/OverridingParentClass.java`
+- `src/polymorphismConcept/OverridingChildClass.java`
+
+**Key Difference: Overloading vs Overriding**:
+
+| Aspect | Overloading | Overriding |
+|--------|-------------|-----------|
+| Scope | Same class | Parent & child classes |
+| Parameters | Different | Same |
+| Return type | Can differ | Must be same or compatible |
+| Time | Compile time | Runtime |
+| Keyword | None | `@Override` (optional annotation) |
+
+---
+
+### **5️⃣ Encapsulation**
+
+**Definition**: Hiding internal implementation details and exposing behavior through controlled access (getters/setters) and access modifiers.
+
+**Access Modifiers**:
+
+| Modifier | Class | Package | Subclass | World |
+|----------|-------|---------|----------|-------|
+| `public` | ✅ | ✅ | ✅ | ✅ |
+| `protected` | ✅ | ✅ | ✅ | ❌ |
+| `default` (none) | ✅ | ✅ | ❌ | ❌ |
+| `private` | ✅ | ❌ | ❌ | ❌ |
+
+**Best Practice**:
+```java
+class Person {
+    private int age;        // Hidden field
+    
+    public void setAge(int a) {
+        if(a > 0) age = a;  // Validation
+    }
+    
+    public int getAge() {
+        return age;         // Controlled access
+    }
+}
+```
+
+**Interview Q**: Why is encapsulation important?
+
+**Answer**: Encapsulation protects internal state, prevents invalid data, and allows implementation to change without affecting users of the class.
+
+---
+
+### **6️⃣ Static & Instance Members**
+
+**Definition**: `static` members belong to the class itself; instance members belong to objects.
+
+**Comparison**:
+
+| Aspect | Static | Instance |
+|--------|--------|----------|
+| Created | Once per class | Once per object |
+| Access | `ClassName.member` | `objectName.member` |
+| Memory | Shared by all objects | Separate for each object |
+| Example | `static int count` | `int age` |
+
+**Static Initializer Block**:
+```java
+static {
+    // Runs once when class is first loaded
+    System.out.println("Class loaded!");
+}
+```
+
+---
+
+## 🌐 **SELENIUM & WEB AUTOMATION**
+
+---
+
+### **1️⃣ Selenium WebDriver Basics**
+
+**Definition**: API for automating web browsers. Creates a WebDriver instance to control a browser and interact with web elements.
+
+**Basic Flow**:
+```java
+// Create driver instance
+WebDriver driver = new ChromeDriver();  // or EdgeDriver(), FirefoxDriver()
+
+// Navigate to URL
+driver.get("https://example.com");
+
+// Get page information
+String title = driver.getTitle();
+String url = driver.getCurrentUrl();
+
+// Close/Quit
+driver.close();   // Close current window/tab
+driver.quit();    // Close all windows and end session
+```
+
+**Key Methods**:
+- `get(String url)` - Navigate to URL
+- `getTitle()` - Get page title
+- `getCurrentUrl()` - Get current URL
+- `findElement()` - Locate element
+- `close()` - Close current window
+- `quit()` - Close all windows and end session
+
+**Interview Q**: What is the difference between `driver.close()` and `driver.quit()`?
+
+**Answer**: `close()` closes only the current window/tab; `quit()` closes all windows and ends the entire WebDriver session (recommended at test end).
+
+**Related files**: `src/seleBasics/SelIntro.java`
+
+---
+
+### **2️⃣ Browser Drivers & Selenium Manager**
+
+**Definition**: Browser-specific executables (chromedriver, geckodriver, msedgedriver) that WebDriver uses to control browsers.
+
+**Selenium Manager** (Modern Approach):
+- Automatically locates and downloads the correct driver for your installed browser
+- No manual driver setup needed
+- Recommended for all new projects
+
+**Manual Setup** (Legacy):
+```java
+System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+WebDriver driver = new ChromeDriver();
+```
+
+**Interview Q**: How does Selenium Manager simplify browser automation setup?
+
+**Answer**: It automatically downloads the correct driver version matching your installed browser, eliminating manual driver management and version conflicts.
+
+---
+
+## 🔍 **Troubleshooting Guide**
+
+| Issue | Solution |
+|-------|----------|
+| Browser won't start | Ensure browser is installed and up-to-date; use Selenium Manager instead of manual driver path |
+| Driver not found | Remove `System.setProperty` lines and rely on Selenium Manager |
+| ClassNotFoundException | Ensure all JARs are on classpath; use Maven exec plugin |
+| Permission denied on driver | On Windows, ensure .exe is not blocked by antivirus |
+| Slow tests | Run in headless mode for CI environments |
+
+---
+
+## 💡 **Tips for Success**
+
+1. **Build regularly**: Use `mvn compile` to catch errors early
+2. **Run examples from IDE**: Easier debugging with breakpoints
+3. **Use Maven for dependencies**: Avoids classpath issues
+4. **Rely on Selenium Manager**: Don't manually manage drivers
+5. **Practice OOP concepts**: Inheritance, interfaces, and polymorphism are essential for maintainability
+
+---
+
+## 📚 **Interview Preparation Checklist**
+
+- [ ] Explain inheritance vs interface implementation with examples
+- [ ] Describe method overloading vs method overriding
+- [ ] Difference between `array.length` and `ArrayList.size()`
+- [ ] Explain string pooling and when to use `==` vs `equals()`
+- [ ] How `static` keyword works for classes and methods
+- [ ] Selenium WebDriver basic flow and close vs quit
+- [ ] Access modifiers and visibility scopes
+- [ ] Constructor purpose and how it's called
+- [ ] `abstract` classes vs `interface` use cases
+- [ ] Polymorphism in action with real examples
+
+---
+
+## 🚀 **Next Steps**
+
+- [ ] Explore more complex Selenium scenarios (wait conditions, element interactions)
+- [ ] Add TestNG or JUnit for writing automated tests
+- [ ] Practice OOP design patterns (Singleton, Factory, etc.)
+- [ ] Build a complete test automation framework
+- [ ] Learn about Page Object Model (POM) for maintainable tests
+
+---
+
+**Last updated**: April 2026  
+**Repository Purpose**: Learning Java fundamentals, OOP concepts, and Selenium automation  
+**Target Level**: Beginners to intermediate Java developers
