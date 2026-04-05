@@ -1,4 +1,4 @@
-package superVarDemo;
+package superVthVarDemo;
 
 public class ChildDemo extends ParentDemo{
 	
