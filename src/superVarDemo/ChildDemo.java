@@ -1,4 +1,4 @@
-package superKeywordDemo;
+package superVarDemo;
 
 public class ChildDemo extends ParentDemo{
 	
