@@ -29,7 +29,7 @@ public class ConstructorDemo {
 			
 		ConstructorDemo pc = new ConstructorDemo(10,20); // we can execute multiple objects with different constructors
 		
-		ConstructorDemo sp = new ConstructorDemo("Hello"); // this will give compile time error because we dont have any constructor with string parameter
+		ConstructorDemo sp = new ConstructorDemo("Hello"); // this will give compile time error if we dont have any constructor with string parameter
 		cd.getData();
 		
 		// 
