@@ -581,28 +581,6 @@ WebDriver driver = new ChromeDriver();
 
 ---
 
-## 🔍 **Troubleshooting Guide**
-
-| Issue | Solution |
-|-------|----------|
-| Browser won't start | Ensure browser is installed and up-to-date; use Selenium Manager instead of manual driver path |
-| Driver not found | Remove `System.setProperty` lines and rely on Selenium Manager |
-| ClassNotFoundException | Ensure all JARs are on classpath; use Maven exec plugin |
-| Permission denied on driver | On Windows, ensure .exe is not blocked by antivirus |
-| Slow tests | Run in headless mode for CI environments |
-
----
-
-## 💡 **Tips for Success**
-
-1. **Build regularly**: Use `mvn compile` to catch errors early
-2. **Run examples from IDE**: Easier debugging with breakpoints
-3. **Use Maven for dependencies**: Avoids classpath issues
-4. **Rely on Selenium Manager**: Don't manually manage drivers
-5. **Practice OOP concepts**: Inheritance, interfaces, and polymorphism are essential for maintainability
-
----
-
 ## 📚 **Interview Preparation Checklist**
 
 - [ ] Explain inheritance vs interface implementation with examples
@@ -617,14 +595,11 @@ WebDriver driver = new ChromeDriver();
 - [ ] Polymorphism in action with real examples
 
 ---
-
-## 🚀 **Next Steps**
-
-- [ ] Explore more complex Selenium scenarios (wait conditions, element interactions)
-- [ ] Add TestNG or JUnit for writing automated tests
-- [ ] Practice OOP design patterns (Singleton, Factory, etc.)
-- [ ] Build a complete test automation framework
-- [ ] Learn about Page Object Model (POM) for maintainable tests
+## 📚 **Access Modifiers**
+- Default: can be accessed anywhere inside that package only.
+- public : can be accessed anywhere
+- Private : If a variable or method is marked as private, it can be accessed only inside the same class.
+- Protected: accessed in same package + child class in other package
 
 ---
 
