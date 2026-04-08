@@ -32,6 +32,10 @@ public class ExceptionDemo {
 		catch(Exception e){
 			System.out.println("I catched generic exception, for any error it supports.");
 		}
+		finally {
+			System.out.println("Delete cookies");
+			
+		}
 
 	}
 
